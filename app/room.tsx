@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { RoomProvider } from "../liveblocks.config";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { LiveMap } from "@liveblocks/client";
-import Loader from "@/components/Loader";
+import Loader from "@/components/loader";
 
 export function Room({ children }: { children: ReactNode }) {
   return (

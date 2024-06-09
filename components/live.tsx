@@ -1,6 +1,5 @@
 import React, {
   MutableRefObject,
-  RefObject,
   useCallback,
   useEffect,
   useState,
@@ -12,11 +11,10 @@ import {
   useMyPresence,
 } from "@/liveblocks.config";
 import CursorChat from "./cursor/cursor-chat";
-import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
+import { CursorMode, CursorState, Reaction } from "@/types/type";
 import ReactionSelector from "./reaction/reaction-button";
 import FlyingReaction from "./reaction/flying-reaction";
 import useInterval from "@/hooks/useInterval";
-import { Comments } from "./comments/Comments";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -24,6 +22,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { shortcuts } from "@/constants";
+import Comments from "./comments/comments";
 
 type LiveProps = {
   canvasRef: MutableRefObject<HTMLCanvasElement | null>;
