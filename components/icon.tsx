@@ -2,6 +2,7 @@ import {
   Brush,
   Circle,
   ImagePlus,
+  LayoutList,
   LayoutPanelLeft,
   LayoutPanelTop,
   LucideProps,
@@ -41,6 +42,7 @@ export const Icons = {
   Square,
   LayoutPanelLeft,
   LayoutPanelTop,
+  LayoutList,
 };
 
 export type Icon = keyof typeof Icons;

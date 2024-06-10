@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { memo } from "react";
 
 import { navElements } from "@/constants";
@@ -12,6 +11,8 @@ import { NewThread } from "./comments/new-thread";
 import { Button } from "./ui/button";
 import { Icon, Icons } from "./icon";
 import { Separator } from "./ui/separator";
+import LayoutSetting from "./layout-setting";
+import { cn } from "@/lib/utils";
 
 const Navbar = ({
   activeElement,
@@ -36,9 +37,11 @@ const Navbar = ({
                 if (Array.isArray(item.value)) return;
                 handleActiveElement(item);
               }}
-              className={`group flex justify-center items-center`}
+              className={cn(
+                `group flex justify-center items-center rounded-md`
+              )}
             >
-              {/* // If value is an array means it's a nav element with sub options
+              {/* If value is an array means it's a nav element with sub options
             i.e., dropdown */}
               {Array.isArray(item.value) ? (
                 <>
@@ -49,17 +52,24 @@ const Navbar = ({
                     imageInputRef={imageInputRef}
                     handleActiveElement={handleActiveElement}
                     handleImageUpload={handleImageUpload}
+                    isActive={isActive(item.value)}
                   />
                 </>
               ) : item?.value === "comments" ? (
                 // If value is comments, trigger the NewThread component
                 <NewThread>
-                  <Button variant="ghost">
+                  <Button
+                    variant="ghost"
+                    className={cn({ "bg-accent": isActive(item.value) })}
+                  >
                     <Icon className="w-4 h-4 shrink-0 text-secondary-foreground" />
                   </Button>
                 </NewThread>
               ) : (
-                <Button variant="ghost">
+                <Button
+                  variant="ghost"
+                  className={cn({ "bg-accent": isActive(item.value) })}
+                >
                   <Icon className="w-4 h-4 shrink-0 text-secondary-foreground" />
                 </Button>
               )}
@@ -76,13 +86,6 @@ const Navbar = ({
   );
 };
 
-const LayoutSetting = () => {
-  return (
-    <Button variant="ghost">
-      <Icons.LayoutPanelTop className="w-4 h-4" />
-    </Button>
-  );
-};
 export default memo(
   Navbar,
   (prevProps, nextProps) => prevProps.activeElement === nextProps.activeElement

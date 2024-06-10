@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { ShapesMenuProps } from "@/types/type";
 
 import {
@@ -11,6 +9,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { Icon, Icons } from "./icon";
+import { cn } from "@/lib/utils";
 
 const ShapesMenu = ({
   item,
@@ -18,6 +17,7 @@ const ShapesMenu = ({
   handleActiveElement,
   handleImageUpload,
   imageInputRef,
+  isActive,
 }: ShapesMenuProps) => {
   const isDropdownElem = item.value.some(
     (elem) => elem?.value === activeElement.value
@@ -28,7 +28,11 @@ const ShapesMenu = ({
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="no-ring">
-          <Button variant="ghost" onClick={() => handleActiveElement(item)}>
+          <Button
+            variant="ghost"
+            onClick={() => handleActiveElement(item)}
+            className={cn({ "bg-accent": isActive })}
+          >
             <Icon className="w-4 h-4 shrink-0 text-foreground" />
           </Button>
         </DropdownMenuTrigger>

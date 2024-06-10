@@ -3,7 +3,7 @@ import LeftSidebar from "@/components/left-sidebar";
 import Live from "@/components/live";
 import NavBar from "@/components/nav-bar";
 import RightSidebar from "@/components/right-sidebar";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { fabric } from "fabric";
 import {
   handleCanvasMouseDown,
@@ -23,7 +23,11 @@ import { defaultNavElement } from "@/constants";
 import { handleDelete, handleKeyDown } from "@/lib/key-events";
 import { handleImageUpload } from "@/lib/shapes";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Layout, LayoutContext } from "@/components/layout-provider";
+
 export default function Page() {
+  const { layout } = useContext(LayoutContext);
   const redo = useRedo();
   const undo = useUndo();
   // Store data in key-value stores that will be synced to other users, (subscription mechanism)
@@ -44,8 +48,8 @@ export default function Page() {
     fontWeight: "",
     fontSize: "",
     fontFamily: "",
-    fill: "#aabbcc",
-    stroke: "#aabbcc",
+    fill: "#ddccff",
+    stroke: "#ddccff",
   });
 
   const [activeElement, setActiveElement] = useState<ActiveElement>({
@@ -113,7 +117,7 @@ export default function Page() {
     selectedShapeRef.current = elem?.value as string;
   };
 
-  // Initialize the canvas
+  // // Initialize the canvas
   useEffect(() => {
     const canvas = initializeFabric({ canvasRef, fabricRef });
     canvas.on("mouse:down", (options) => {
@@ -205,7 +209,7 @@ export default function Page() {
   }, [canvasObjects]);
 
   return (
-    <main className="h-screen overflow-hidden">
+    <main className="h-screen overflow-hidden bg-accent/50">
       <NavBar
         activeElement={activeElement}
         handleActiveElement={handleActiveElement}
@@ -220,18 +224,62 @@ export default function Page() {
           });
         }}
       />
-      <section className="flex h-full justify-center">
-        <LeftSidebar allShapes={Array.from(canvasObjects)} />
-        <Live canvasRef={canvasRef} undo={undo} redo={redo} />
-        <RightSidebar
-          elementAttributes={elementAttributes}
-          setElementAttributes={setElementAttributes}
-          fabricRef={fabricRef}
-          isEditingRef={isEditingRef}
-          activeObjectRef={activeObjectRef}
-          syncShapeInStorage={syncShapeInStorage}
-        />
-      </section>
+
+      {layout === Layout.SIDEBARS ? (
+        <section className="flex h-full justify-center">
+          <LeftSidebar isTabs={false} allShapes={Array.from(canvasObjects)} />
+          <Live canvasRef={canvasRef} undo={undo} redo={redo} />
+          <RightSidebar
+            elementAttributes={elementAttributes}
+            setElementAttributes={setElementAttributes}
+            fabricRef={fabricRef}
+            isEditingRef={isEditingRef}
+            activeObjectRef={activeObjectRef}
+            syncShapeInStorage={syncShapeInStorage}
+            isTabs={false}
+          />
+        </section>
+      ) : (
+        <section className="relative flex h-full justify-center">
+          <Tabs
+            defaultValue="layers"
+            className="w-[240px] top-10 left-2.5 z-10 absolute"
+          >
+            <TabsList className="bg-transparent">
+              <TabsTrigger
+                className="bg-transparent text-xs data-[state=active]:bg-transparent data-[state=active]:text-foreground font-semibold data-[state=active]:shadow-none"
+                value="layers"
+              >
+                Layers
+              </TabsTrigger>
+              <TabsTrigger
+                className="bg-transparent text-xs data-[state=active]:bg-transparent data-[state=active]:text-foreground font-semibold data-[state=active]:shadow-none"
+                value="design"
+              >
+                Design
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="layers" className="rounded-md">
+              <LeftSidebar
+                allShapes={Array.from(canvasObjects)}
+                isTabs={true}
+              />
+            </TabsContent>
+            <TabsContent value="design">
+              <RightSidebar
+                elementAttributes={elementAttributes}
+                setElementAttributes={setElementAttributes}
+                fabricRef={fabricRef}
+                isEditingRef={isEditingRef}
+                activeObjectRef={activeObjectRef}
+                syncShapeInStorage={syncShapeInStorage}
+                isTabs={true}
+              />
+            </TabsContent>
+          </Tabs>
+          <Live canvasRef={canvasRef} undo={undo} redo={redo} />
+        </section>
+      )}
     </main>
   );
 }

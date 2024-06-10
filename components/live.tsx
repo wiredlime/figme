@@ -1,5 +1,6 @@
 import React, {
   MutableRefObject,
+  memo,
   useCallback,
   useEffect,
   useState,
@@ -30,7 +31,7 @@ type LiveProps = {
   redo: VoidFunction;
 };
 
-export default function Live({ canvasRef, undo, redo }: LiveProps) {
+function Live({ canvasRef, undo, redo }: LiveProps) {
   const broadcast = useBroadcastEvent(); // Use to broadcast my flying reaction
 
   const [{ cursor }, updateMyPresence] = useMyPresence();
@@ -47,7 +48,7 @@ export default function Live({ canvasRef, undo, redo }: LiveProps) {
   }, 1000);
 
   // Every time cursor is pressed (left click) && in Reaction mode, keep adding the selected reaction (cursorState.reaction) to the array.
-  // So that we can later map and render it on the <Live/> component
+  // So that we can later map and render it on the <Live/> component - broadcast it other users
   useInterval(() => {
     if (
       cursorState.mode === CursorMode.Reaction &&
@@ -250,3 +251,5 @@ export default function Live({ canvasRef, undo, redo }: LiveProps) {
     </ContextMenu>
   );
 }
+
+export default memo(Live);

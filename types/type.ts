@@ -98,6 +98,7 @@ export type RightSidebarProps = {
   activeObjectRef: React.RefObject<fabric.Object | null>;
   isEditingRef: React.MutableRefObject<boolean>;
   syncShapeInStorage: (obj: any) => void;
+  isTabs: boolean;
 };
 
 export type NavbarProps = {
@@ -117,6 +118,7 @@ export type ShapesMenuProps = {
   handleActiveElement: any;
   handleImageUpload: any;
   imageInputRef: any;
+  isActive: boolean;
 };
 
 export type CanvasMouseDown = {
