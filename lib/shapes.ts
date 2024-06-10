@@ -14,7 +14,8 @@ export const createRectangle = (pointer: PointerEvent) => {
     top: pointer.y,
     width: 100,
     height: 100,
-    fill: "#aabbcc",
+    fill: "#ddccff",
+    stroke: "#ddccff",
     objectId: uuidv4(),
   } as CustomFabricObject<fabric.Rect>);
 
@@ -27,7 +28,8 @@ export const createTriangle = (pointer: PointerEvent) => {
     top: pointer.y,
     width: 100,
     height: 100,
-    fill: "#aabbcc",
+    fill: "#ddccff",
+    stroke: "#ddccff",
     objectId: uuidv4(),
   } as CustomFabricObject<fabric.Triangle>);
 };
@@ -37,7 +39,8 @@ export const createCircle = (pointer: PointerEvent) => {
     left: pointer.x,
     top: pointer.y,
     radius: 100,
-    fill: "#aabbcc",
+    fill: "#ddccff",
+    stroke: "#ddccff",
     objectId: uuidv4(),
   } as any);
 };
@@ -46,7 +49,7 @@ export const createLine = (pointer: PointerEvent) => {
   return new fabric.Line(
     [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
     {
-      stroke: "#aabbcc",
+      stroke: "#ddccff",
       strokeWidth: 2,
       objectId: uuidv4(),
     } as CustomFabricObject<fabric.Line>
@@ -57,11 +60,12 @@ export const createText = (pointer: PointerEvent, text: string) => {
   return new fabric.IText(text, {
     left: pointer.x,
     top: pointer.y,
-    fill: "#aabbcc",
+    fill: "#ddccff",
+    stroke: "#ddccff",
     fontFamily: "Helvetica",
     fontSize: 36,
     fontWeight: "400",
-    objectId: uuidv4()
+    objectId: uuidv4(),
   } as fabric.ITextOptions);
 };
 
@@ -145,7 +149,7 @@ export const modifyShape = ({
   // if  property is width or height, set the scale of the selected element
   if (property === "width") {
     selectedElement.set("scaleX", 1);
-    selectedElement.set("width", value);  
+    selectedElement.set("width", value);
   } else if (property === "height") {
     selectedElement.set("scaleY", 1);
     selectedElement.set("height", value);

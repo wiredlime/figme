@@ -50,49 +50,49 @@ export const getShapeInfo = (shapeType: string) => {
   switch (shapeType) {
     case "rect":
       return {
-        icon: "/assets/rectangle.svg",
+        icon: "Square",
         name: "Rectangle",
       };
 
     case "circle":
       return {
-        icon: "/assets/circle.svg",
+        icon: "Circle",
         name: "Circle",
       };
 
     case "triangle":
       return {
-        icon: "/assets/triangle.svg",
+        icon: "Triangle",
         name: "Triangle",
       };
 
     case "line":
       return {
-        icon: "/assets/line.svg",
+        icon: "Spline",
         name: "Line",
       };
 
     case "i-text":
       return {
-        icon: "/assets/text.svg",
+        icon: "Type",
         name: "Text",
       };
 
     case "image":
       return {
-        icon: "/assets/image.svg",
+        icon: "ImagePlus",
         name: "Image",
       };
 
     case "freeform":
       return {
-        icon: "/assets/freeform.svg",
-        name: "Free Drawing",
+        icon: "Brush",
+        name: "Drawing",
       };
 
     default:
       return {
-        icon: "/assets/rectangle.svg",
+        icon: "Square",
         name: shapeType,
       };
   }

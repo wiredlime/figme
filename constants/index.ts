@@ -1,66 +1,77 @@
+import { Icon } from "@/components/icon";
+
 export const COLORS = ["#DC2626", "#D97706", "#059669", "#7C3AED", "#DB2777"];
 
-export const shapeElements = [
+type ShapeElement = {
+  icon: Icon;
+  name: string;
+  value: string;
+};
+export const shapeElements: ShapeElement[] = [
   {
-    icon: "/assets/rectangle.svg",
+    icon: "Square",
     name: "Rectangle",
     value: "rectangle",
   },
   {
-    icon: "/assets/circle.svg",
+    icon: "Circle",
     name: "Circle",
     value: "circle",
   },
   {
-    icon: "/assets/triangle.svg",
+    icon: "Triangle",
     name: "Triangle",
     value: "triangle",
   },
   {
-    icon: "/assets/line.svg",
+    icon: "Spline",
     name: "Line",
     value: "line",
   },
   {
-    icon: "/assets/image.svg",
+    icon: "ImagePlus",
     name: "Image",
     value: "image",
   },
   {
-    icon: "/assets/freeform.svg",
-    name: "Free Drawing",
+    icon: "Brush",
+    name: "Drawing",
     value: "freeform",
   },
 ];
 
-export const navElements = [
+export const navElements: {
+  icon: Icon;
+  name: string;
+  value: string | ShapeElement[];
+}[] = [
   {
-    icon: "/assets/select.svg",
-    name: "Select",
+    icon: "MousePointer2",
     value: "select",
+    name: "Select",
   },
   {
-    icon: "/assets/rectangle.svg",
-    name: "Rectangle",
+    icon: "Shapes",
     value: shapeElements,
+    name: "Rectangle",
   },
   {
-    icon: "/assets/text.svg",
+    icon: "Type",
     value: "text",
     name: "Text",
   },
   {
-    icon: "/assets/delete.svg",
+    icon: "Trash2",
     value: "delete",
     name: "Delete",
   },
   {
-    icon: "/assets/reset.svg",
+    icon: "RotateCcw",
     value: "reset",
     name: "Reset",
   },
   {
-    icon: "/assets/comments.svg",
+    icon: "MessageSquareText",
     value: "comments",
     name: "Comments",
   },

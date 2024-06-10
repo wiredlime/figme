@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { Icon, Icons } from "./icon";
 
 const ShapesMenu = ({
   item,
@@ -21,59 +22,40 @@ const ShapesMenu = ({
   const isDropdownElem = item.value.some(
     (elem) => elem?.value === activeElement.value
   );
+  const Icon = Icons[item.icon as Icon];
 
   return (
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="no-ring">
-          <Button
-            className="relative h-5 w-5 object-contain"
-            onClick={() => handleActiveElement(item)}
-          >
-            <Image
-              src={isDropdownElem ? activeElement.icon : item.icon}
-              alt={item.name}
-              fill
-              className={isDropdownElem ? "invert" : ""}
-            />
+          <Button variant="ghost" onClick={() => handleActiveElement(item)}>
+            <Icon className="w-4 h-4 shrink-0 text-foreground" />
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className="mt-5 flex flex-col gap-y-1 border-none bg-primary-black py-4 text-white">
-          {item.value.map((elem) => (
-            <Button
-              key={elem?.name}
-              onClick={() => {
-                handleActiveElement(elem);
-              }}
-              className={`flex h-fit justify-between gap-10 rounded-none px-5 py-3 focus:border-none ${
-                activeElement.value === elem?.value
-                  ? "bg-primary-green"
-                  : "hover:bg-primary-grey-200"
-              }`}
-            >
-              <div className="group flex items-center gap-2">
-                <Image
-                  src={elem?.icon as string}
-                  alt={elem?.name as string}
-                  width={20}
-                  height={20}
-                  className={
-                    activeElement.value === elem?.value ? "invert" : ""
-                  }
-                />
-                <p
-                  className={`text-sm  ${
-                    activeElement.value === elem?.value
-                      ? "text-primary-black"
-                      : "text-white"
-                  }`}
-                >
-                  {elem?.name}
-                </p>
-              </div>
-            </Button>
-          ))}
+        <DropdownMenuContent className="mt-2 flex flex-col gap-y-1 p-0 border-none text-foreground bg-secondary/20 backdrop-blur-md">
+          {item.value.map((elem) => {
+            const ItemIcon = Icons[elem?.icon as Icon];
+            return (
+              <Button
+                key={elem?.name}
+                variant="ghost"
+                onClick={() => {
+                  handleActiveElement(elem);
+                }}
+                className={`flex h-fit justify-between gap-10 rounded-none px-5 py-3 focus:border-none text-foreground ${
+                  activeElement.value === elem?.value
+                    ? "bg-accent"
+                    : "hover:bg-gray-200/50"
+                }`}
+              >
+                <div className="group flex items-center gap-5">
+                  <ItemIcon className="w-4 h-4 shrink-0 text-foreground" />
+                  <p className={`text-sm text-foreground`}>{elem?.name}</p>
+                </div>
+              </Button>
+            );
+          })}
         </DropdownMenuContent>
       </DropdownMenu>
 
