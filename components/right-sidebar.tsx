@@ -37,8 +37,8 @@ const RightSidebar = ({
     });
   };
   return (
-    <section className="flex flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300 min-w-[227px] sticky left-0 h-full max-sm:hidden select-none overflow-y-auto pb-20">
-      <h3 className="border border-primary-grey-200 px-5 py-4 text-xs uppercase">
+    <section className="flex flex-col border bg-background text-foreground min-w-[227px] sticky left-0 h-full max-sm:hidden select-none overflow-y-auto pb-20">
+      <h3 className="border-b px-5 py-4 text-xs text-foreground font-semibold uppercase">
         Design
       </h3>
       <Dimensions
@@ -57,14 +57,14 @@ const RightSidebar = ({
         inputRef={colorInputRef}
         attribute={elementAttributes.fill}
         attributeType="fill"
-        placeholder="color"
+        placeholder="Color"
         handleInputChange={handleInputChange}
       />
       <Color
         inputRef={strokeInputRef}
         attribute={elementAttributes.stroke}
         attributeType="stroke"
-        placeholder="stroke"
+        placeholder="Stroke"
         handleInputChange={handleInputChange}
       />
       <Export />
