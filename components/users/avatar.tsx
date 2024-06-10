@@ -22,11 +22,11 @@ export function Avatar({
 }: {
   src?: string;
   name: string;
-  otherStyles: string;
+  otherStyles?: string;
 }) {
   return (
     <div
-      className={cn(styles.avatar, otherStyles, "h-9 w-9")}
+      className={cn(styles.avatar, otherStyles, "relative h-10 w-10")}
       data-tooltip={name}
     >
       <Image
