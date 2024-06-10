@@ -27,19 +27,14 @@ function ActiveUsers() {
 
         {currentUser && (
           <div className="relative">
-            <Avatar
-              otherStyles="border-[3px] border-primary-green"
-              name="You"
-            />
+            <Avatar name="You" />
           </div>
         )}
       </div>
     );
   }, [users.length]);
   return (
-    <div className="flex items-center justify-center gap-1 py-2">
-      {memoizedUsers}
-    </div>
+    <div className="flex items-center justify-center">{memoizedUsers}</div>
   );
 }
 
