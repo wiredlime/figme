@@ -1,11 +1,12 @@
 
-![ally yeu em ](https://github.com/wiredlime/figme/assets/79243058/9140c62d-4f2b-487e-829a-5eca6ef9d72a)
+![ally yeu linh](https://github.com/wiredlime/figme/assets/79243058/9140c62d-4f2b-487e-829a-5eca6ef9d72a)
 
-## Project: Figme - Collaborative Design Platform
+
 
 ### Introduction
 
 Figme is a collaborative design platform where teams create, edit designs and communicate in real-time.
+We are live [here](https://figme.vercel.app/) 
 
 ### Features
 
