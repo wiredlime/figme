@@ -37,7 +37,8 @@ https://github.com/wiredlime/figme/assets/79243058/bfbabf29-f6ac-4654-bd48-5e03e
 
 ![Figme-sidebars](https://github.com/wiredlime/figme/assets/79243058/db0cf886-a65a-4eba-bd47-1c4d4a35f4a4)
 
-<img width="946" alt="Screenshot 2024-06-11 at 10 58 10 AM" src="https://github.com/wiredlime/figme/assets/79243058/bcdced79-5e36-4980-bba2-ad1a8f9538de">
+<img width="940" alt="Screenshot 2024-06-11 at 10 58 10 AM" src="https://github.com/wiredlime/figme/assets/79243058/28df9c4c-da8f-45a8-a795-66f5929ee21a">
+
 
 
 ### Additional Resources
