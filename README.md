@@ -10,7 +10,7 @@ We are live [here](https://figme.vercel.app/)
 
 ### Features
 
-* **Real-time Collaboration:** Users can chat and leaves comments, and drop reactions on the design place to communicate with other participants in real-time
+* **Real-time Collaboration:** Users can chat and leave comments, and drop reactions on the design place to communicate with other participants in real-time
 * **Design:** Users can create and see shapes, text, add images on a canvas created by each other in real-time
 * **Version History:** Users can track changes and revert to previous versions
 * **Layout switcher:** Users can switch inbetween 2 different layouts
@@ -18,7 +18,7 @@ We are live [here](https://figme.vercel.app/)
 ### User guide
 
 * **/ :** To activate chat cursor 💬
-* **e :** To activate rection cursor 🦄
+* **e :** To activate reaction cursor 🦄
 * **Esc :** To escape reality and fly into the virtual of nothingness 🎩
 
 
